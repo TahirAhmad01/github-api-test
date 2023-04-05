@@ -1,15 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
+import InfoCard from "./components/infoCard";
+import Navbar from "./components/nav";
 import { useGetUsersQuery } from "./features/githubUser/finduser";
 
 function App() {
-  const { data, isError, isLoading, error } = useGetUsersQuery();
+  const [inpVal, setInpVal] = useState("");
+  const { data, isError, isLoading, error } = useGetUsersQuery(
+    inpVal ? inpVal : "tahirahmad01"
+  );
   // console.log(useGetUsersQuery());
-  console.log(error);
+  console.log(data);
   // console.log(data);
 
   return (
-    <div className="App">
-      <div className="text-3xl">github status</div>
+    <div className="bg-gray-50">
+      <Navbar value={inpVal} setValue={setInpVal} />
+
+      {!isError && !isLoading && (
+        <InfoCard
+          image={data.avatar_url}
+          followers={data?.followers}
+          following={data?.following}
+          repo={data?.public_repos}
+          name={data?.name}
+          location={data?.location}
+        />
+      )}
+
+      {/* <div className="text-3xl">github status</div>
       <header className="text-2xl">
         {isLoading && <div>loading......</div>}
         {!isError && !isLoading && (
@@ -23,7 +41,7 @@ function App() {
             <div>Repo Url: {data?.repos_url}</div>
           </>
         )}
-      </header>
+      </header> */}
       {isError && (
         <div className="text-red-500 mt-4">
           <div>{error?.data?.message}</div>
