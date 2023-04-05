@@ -1,4 +1,4 @@
-import { githubApi } from "./api/apiSlice";
+import { githubApi } from "../api/apiSlice";
 
 export const findUser = githubApi.injectEndpoints({
   endpoints: (builder) => ({

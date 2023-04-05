@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDebounce } from "use-debounce";
 import InfoCard from "./components/infoCard";
 import Navbar from "./components/nav";
-import { useGetUsersQuery } from "./features/githubUser/finduser";
+import { useGetUsersQuery } from "./features/githubUser/findUsers/findUser";
 
 function App() {
   const [inpVal, setInpVal] = useState("");
@@ -27,6 +27,7 @@ function App() {
           repo={data?.public_repos}
           name={data?.name}
           location={data?.location}
+          value={value}
         />
       )}
 
