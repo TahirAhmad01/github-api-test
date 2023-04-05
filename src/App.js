@@ -1,20 +1,23 @@
 import React, { useState } from "react";
+import { useDebounce } from "use-debounce";
 import InfoCard from "./components/infoCard";
 import Navbar from "./components/nav";
 import { useGetUsersQuery } from "./features/githubUser/finduser";
 
 function App() {
   const [inpVal, setInpVal] = useState("");
+  const [value] = useDebounce(inpVal, 1000);
+
   const { data, isError, isLoading, error } = useGetUsersQuery(
-    inpVal ? inpVal : "tahirahmad01"
+    value ? value : "tahirahmad01"
   );
-  // console.log(useGetUsersQuery());
-  console.log(data);
-  // console.log(data);
+  console.log(value);
 
   return (
     <div className="bg-gray-50 min-h-screen">
       <Navbar value={inpVal} setValue={setInpVal} />
+
+      {isLoading && <div className="center">loading........</div>}
 
       {!isError && !isLoading && (
         <InfoCard
