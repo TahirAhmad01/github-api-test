@@ -22,26 +22,26 @@ function InfoCard({ image, followers, following, repo, name, location }) {
                 </h3>
                 <div className="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase">
                   <i className="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400" />
-                  {location}
+                  {location || "Unknown Place"}
                 </div>
               </div>
               <div className="w-full px-4 text-center mt-1">
                 <div className="flex justify-center pb-4">
                   <div className="mr-4 p-3 text-center">
                     <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                      {followers}
+                      {followers || "0"}
                     </span>
                     <span className="text-sm text-blueGray-400">Followers</span>
                   </div>
                   <div className="mr-4 p-3 text-center">
                     <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                      {following}
+                      {following || "0"}
                     </span>
                     <span className="text-sm text-blueGray-400">Following</span>
                   </div>
                   <div className="lg:mr-4 p-3 text-center">
                     <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                      {repo}
+                      {repo || "0"}
                     </span>
                     <span className="text-sm text-blueGray-400">
                       Repositories

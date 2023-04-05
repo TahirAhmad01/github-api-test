@@ -13,7 +13,7 @@ function App() {
   // console.log(data);
 
   return (
-    <div className="bg-gray-50">
+    <div className="bg-gray-50 min-h-screen">
       <Navbar value={inpVal} setValue={setInpVal} />
 
       {!isError && !isLoading && (
