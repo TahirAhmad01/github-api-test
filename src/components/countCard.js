@@ -1,8 +1,11 @@
 import React from "react";
 
-function CountCard({ name, amount }) {
+function CountCard({ name, amount, func }) {
   return (
-    <div className="mr-4 p-3 text-center text-gray-700 hover:bg-gray-100 rounded-md cursor-pointer">
+    <div
+      className="mr-4 p-3 text-center text-gray-700 hover:bg-gray-100 rounded-md cursor-pointer"
+      onClick={() => func(name)}
+    >
       <span className="text-xl font-bold block uppercase tracking-wide">
         {amount}
       </span>
