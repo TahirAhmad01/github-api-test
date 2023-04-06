@@ -1,13 +1,16 @@
 import React from "react";
-import { useDebounce } from "use-debounce";
+import logo from "../assets/image/logo.png";
 
 function Navbar({ value, setValue }) {
   return (
     <div>
       <nav className="bg-gray-700">
-        <div className="container mx-auto py-4 flex justify-between items-center px-4">
-          <h1 className="text-2xl font-bold text-gray-50">Github api</h1>
-          <div className="flex items-center space-x-2 bg-white py-1 px-2 rounded-full">
+        <div className="mx-auto py-4 flex justify-between items-center px-4 gap-4">
+          <h1 className="text-2xl font-bold text-gray-50 flex gap-3 items-center">
+            <img src={logo} alt="logo" className="w-9" />
+            <div className="hidden sm:block">Github api</div>
+          </h1>
+          <div className="flex items-center space-x-2 bg-white py-1 px-2 rounded-full w-full sm:w-72">
             <span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -27,7 +30,7 @@ function Navbar({ value, setValue }) {
             <input
               className="outline-none"
               type="text"
-              placeholder="Search Username"
+              placeholder="Search Github Username"
               value={value}
               onChange={(e) => setValue(e.target.value)}
             />
