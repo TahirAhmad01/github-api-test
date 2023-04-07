@@ -9,7 +9,7 @@ function RepoCard({ name, description, live, gitUrl, language, star }) {
     <a
       href={gitUrl}
       target="_blank"
-      className="w-full block border rounded-lg border-gray-200 p-5 shadow-sm hover:bg-gray-100 delay-100 duration-200 mb-3"
+      className="w-full block border rounded-lg border-gray-200 p-5 shadow-sm hover:bg-gray-100 delay-100 duration-200 mb-3 overflow-x-hidden"
     >
       {/* Header */}
       <div className="flex flex-row items-center">
@@ -29,7 +29,7 @@ function RepoCard({ name, description, live, gitUrl, language, star }) {
               <span
                 href={live ? live : "#"}
                 target="_blank"
-                className="text-blue-600 hover:underline"
+                className="text-blue-600 hover:underline break-words"
                 onClick={() => {
                   window.open(
                     "https://" +

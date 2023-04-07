@@ -8,7 +8,7 @@ function App() {
   const [value] = useDebounce(inpVal, 1000);
 
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-gray-50 min-h-screen overflow-x-hidden">
       <Navbar value={inpVal} setValue={setInpVal} />
       <InfoCard value={value} />
     </div>
