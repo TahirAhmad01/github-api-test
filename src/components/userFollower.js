@@ -1,5 +1,6 @@
 import React from "react";
 import { useUserFollowersQuery } from "../features/githubUser/userFollowers/userFollowers";
+import FollowLoading from './followLoading';
 
 function UserFollower({ value }) {
   const { data, isLoading, isError, error } = useUserFollowersQuery(
@@ -11,7 +12,13 @@ function UserFollower({ value }) {
   return (
     <div>
       <h1 className="text-lg mb-2 font-medium text-gray-800">Followers</h1>
-      {isLoading ? <div className="text-center">Loading...</div> : null}
+      {isLoading ? (
+        <div className="text-center">
+          <FollowLoading />
+          <FollowLoading />
+          <FollowLoading />
+        </div>
+      ) : null}
       {!isLoading && isError ? (
         <div className="text-center">Something went wrong</div>
       ) : null}

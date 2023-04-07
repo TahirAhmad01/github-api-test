@@ -1,6 +1,7 @@
 import React from "react";
 import { useGitReposQuery } from "../features/githubUser/gitRepo/gitRepo";
 import RepoCard from "./repoCard";
+import RepoLoading from "./repoLoading";
 
 function RepositoryList({ value }) {
   const {
@@ -12,14 +13,20 @@ function RepositoryList({ value }) {
   return (
     <div>
       <h1 className="text-lg mb-2 font-medium text-gray-800">Repositories</h1>
-      {isLoading ? <div className="text-center">Loading...</div> : null}
+      {isLoading ? (
+        <div className="text-center">
+          <RepoLoading />
+          <RepoLoading />
+          <RepoLoading />
+        </div>
+      ) : null}
       {!isLoading && isError ? (
         <div className="text-center">Something went wrong</div>
       ) : null}
       {!isLoading && repositories?.length === 0 && (
         <div className="text-center mt-5">No repositories found</div>
       )}
-      
+
       {!isLoading && repositories?.length > 0 ? (
         <div>
           {repositories.map((repo, idx) => {

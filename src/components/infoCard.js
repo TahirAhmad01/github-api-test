@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useGetUsersQuery } from "../features/githubUser/findUsers/findUser";
 import CountCard from "./countCard";
+import Loading from "./loading";
 import RepositoryList from "./repositoryList";
 import UserFollower from "./userFollower";
 import UserFollowing from "./userFollowing";
@@ -21,9 +22,9 @@ function InfoCard({ value }) {
     public_repos: repo,
     name,
     location,
-    login
+    login,
   } = data || {};
-  console.log(activeTabs);
+  console.log(error);
 
   const tabChange = (tabName) => {
     setActiveTabs((prevState) => ({
@@ -38,7 +39,12 @@ function InfoCard({ value }) {
     <section>
       <div className="w-full lg:w-7/12 px-2 mx-auto">
         <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg mt-7 py-7">
-          {isLoading ? <div className="text-center">Loading...</div> : null}
+          {isLoading ? (
+            <div className="text-center">
+              {" "}
+              <Loading />
+            </div>
+          ) : null}
           {!isLoading && isError ? (
             <div className="text-center text-red-500">
               {error?.data?.message === "Not Found"
@@ -61,7 +67,7 @@ function InfoCard({ value }) {
                 </div>
                 <div className="text-center mt-6">
                   <h3 className="text-xl font-semibold leading-normal text-blueGray-700">
-                    {name || "Unknown"} 
+                    {name || "Unknown"}
                     <div className="text-gray-500 text-xs">@{login}</div>
                   </h3>
                   <div className="text-xs leading-normal mb-2 text-gray-500 font-bold uppercase mt-2">
